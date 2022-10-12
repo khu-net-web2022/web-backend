@@ -1,4 +1,4 @@
-# KHU-NET 2022 WEB Project Backend Repo
+# KHU-kie Market(KHU-NET 2022 WEB Project) Backend Repo
 
 ## About the project
 
@@ -6,11 +6,13 @@
 
 백엔드를 구현한 코드를 저장한 레포지토리입니다.
 
+[프론트엔드 레포지토리][1]
+
 ## Getting Started
 
 ### Prerequisites
 
-- node, npm
+- [Node.js][2]
 
 ### How to execute server
 
@@ -35,3 +37,6 @@
 ## Current Status
 
 간단한 API를 만들어서 프론트엔드 app과 요청/응답을 할 수 있는 수준만 구현하였음.
+
+[1]: https://github.com/khu-net-web2022/web-frontend
+[2]: https://nodejs.org
