@@ -36,7 +36,7 @@
 
 ## Current Status
 
-간단한 API를 만들어서 프론트엔드 app과 요청/응답을 할 수 있는 수준만 구현하였음.
+Post(게시글)에 대한 Read API를 구현하였음.
 
 [1]: https://github.com/khu-net-web2022/web-frontend
 [2]: https://nodejs.org
