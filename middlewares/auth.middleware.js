@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const authMiddleWare = function (req, res, next) {
+const authMiddleWare = async function (req, res, next) {
   const authorization = req.headers.authorization;
 
   if (authorization === undefined) {
@@ -12,8 +12,14 @@ const authMiddleWare = function (req, res, next) {
       req.verifiedId = jwt.verify(accessToken, process.env.JWT_SECRET_KEY);
       next();
     } catch (e) {
-      console.log(e);
-      res.status(400).json({ success: false, loginFailed: true });
+      const errorResponse = {
+        success: false,
+        authFailed: true,
+      };
+      if (e.message === "jwt expired") {
+        errorResponse.reissue = true;
+      }
+      res.status(400).json(errorResponse);
     }
   }
 };

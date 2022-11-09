@@ -1,13 +1,12 @@
 const express = require("express");
-const postModel = require("../models/post.model");
+const { getAllPosts, getPostById } = require("../controllers/post.controller");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  posts = await postModel.find();
-  res.json({
-    posts: posts,
-  });
-});
+router.get("/", getAllPosts);
+
+router.get("/:id", getPostById);
+
+router.post("/", async (req, res) => {}); // 게시글 업로드 구현 예정
 
 module.exports = router;
