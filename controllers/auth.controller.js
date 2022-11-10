@@ -30,4 +30,26 @@ const loginFunc = async (req, res) => {
   } else res.status(400).json({ success: false });
 };
 
-module.exports = { loginFunc };
+const reissue = async (req, res) => {
+  const refreshToken = req.headers.refresh; // reissue
+
+  if (refresh) {
+    const token = await tokenModel.findOne({
+      refreshToken,
+    });
+
+    if (token === null) {
+      res.send(400).json({ success: false, message: "invalid refreshToken" });
+    } else {
+      const payload = { id: userId };
+      const accessToken = jwt.sign(payload, process.env.JWT_SECRET_KEY, { algorithm: "HS256", expiresIn: "30m" });
+
+      res.send(200).json({
+        success: true,
+        accessToken,
+      });
+    }
+  } else res.send(400).json({ success: false, message: "refreshToken needed" });
+};
+
+module.exports = { loginFunc, reissue };
